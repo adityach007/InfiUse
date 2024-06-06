@@ -730,15 +730,18 @@ def chat():
 
     st.markdown("*Generally use Mistral model for code and Llama-3 for text related purposes*")
 
+    # Initialize session state variables for chat history if not already initialized
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
 
-    current_chat_history = st.session_state.chat_sessions.get(st.session_state.current_session_id, [])
+    current_chat_history = st.session_state.chat_history
 
     for message in current_chat_history:
         memory.save_context({'input': message['human']}, {'output': message['AI']})
 
     # Initialize Groq Langchain chat object and conversation
     groq_chat = ChatGroq(
-        groq_api_key=groq_api_key,
+        groq_api_key=GROQ_API_KEY,
         model_name=model
     )
 
@@ -779,9 +782,8 @@ def chat():
             current_chat_history.append(message)
 
             # Save current chat history back to session state
-            st.session_state.chat_sessions[st.session_state.current_session_id] = current_chat_history
+            st.session_state.chat_history = current_chat_history
             st.experimental_rerun()
-
 
 
 def help():
