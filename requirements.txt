@@ -5,3 +5,11 @@ langchain-community==0.2.1
 langchain-core==0.2.3
 langchain-groq==0.1.4
 streamlit-ace==0.1.1
+dotenv
+os
+json
+base64
+requests
+uuid
+time
+datetime
