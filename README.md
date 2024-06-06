@@ -8,7 +8,9 @@ User Authentication
 Before accessing the main features, users must authenticate themselves. The application provides a user authentication system with the following functionalities:
 
 **Login:** Users can log in with their username and password.
+
 **Registration:** New users can register by providing a username, password, security question, and answer.
+
 **Forgot Password:** Users can reset their password by answering the security question associated with their account.
 
 The user data is stored in a JSON file **(users_db.json)**, and various helper functions are provided to load, save, and authenticate users.
