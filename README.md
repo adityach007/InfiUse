@@ -72,7 +72,7 @@ The application includes several additional features and functionalities:
 Clone the repository
 
 ```bash
-Project repo: https://github.com/
+Project repo: https://github.com/adityach007/InfiUse
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
