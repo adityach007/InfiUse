@@ -79,6 +79,10 @@ The InfiUse Blog App is built using the following technologies:
 
 9. **StreamlitAce:** The streamlit-ace library is used for providing a code editor interface within the application.
 
+## Contributing
+
+We welcome and appreciate contributions from the community to help improve and expand the InfiUse Blog App. Whether you're addressing an existing issue, proposing a new feature, or fixing a bug, your contributions are valuable and will help enhance the project's capabilities
+
 ## Conclusion
 
 The InfiUse Blog App is a feature-rich application that combines blogging, code sharing, collaboration, and AI-powered chat capabilities. It leverages advanced technologies like large language models and APIs to provide an enhanced user experience. The project demonstrates the integration of various Python libraries and AI services to create a comprehensive and interactive application.
