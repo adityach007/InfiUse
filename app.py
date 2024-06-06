@@ -741,7 +741,7 @@ def chat():
 
     # Initialize Groq Langchain chat object and conversation
     groq_chat = ChatGroq(
-        groq_api_key=GROQ_API_KEY,
+        groq_api_key=groq_api_key,
         model_name=model
     )
 
