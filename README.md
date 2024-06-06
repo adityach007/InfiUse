@@ -13,6 +13,8 @@ Before accessing the main features, users must authenticate themselves. The appl
 
 **Forgot Password:** Users can reset their password by answering the security question associated with their account.
 
+**Deployment Link:** https://infiuse-6.onrender.com/
+
 The user data is stored in a JSON file **(users_db.json)**, and various helper functions are provided to load, save, and authenticate users.
 
 ## WorkFlow
