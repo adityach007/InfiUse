@@ -15,6 +15,9 @@ from blog import (load_blog_posts, save_blog_posts, create_blog_post, generate_c
 
 from chat import chat, download_chat
 from collab import code_snippets_sharing, view_code_snippets
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -48,19 +51,24 @@ def fetch_response(messages):
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     return response.json()
 
+def file_response(prompt, file_contents):
+        # Log the inputs
+        logger.info(f"Prompt: {prompt}")
+        logger.info(f"File contents: {file_contents}")
 
-def file_response(question, file):
-    prompt = f"{question} {file}"
-    groq_chat = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name="llama3-8b-8192")
+        # Create the prompt for the conversation
+        prompt = f"{prompt} {file_contents}"
+        groq_chat = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name="llama3-8b-8192")
 
-    conversation = ConversationChain(
-        llm=groq_chat,
-        memory=ConversationBufferWindowMemory(k=5)
-    )
+        conversation = ConversationChain(
+            llm=groq_chat,
+            memory=ConversationBufferWindowMemory(k=5)
+        )
 
-    response = conversation(prompt)
-    content = response['response']
-    return content
+        response = conversation(prompt)
+        content = response['response']
+        return content
+
 
 def about():
     st.title("About")

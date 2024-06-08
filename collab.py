@@ -9,7 +9,9 @@ import uuid
 import time
 import PyPDF2
 from docx import Document
-
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 load_dotenv()
 
 groq_api_key = os.environ['GROQ_API_KEY']
@@ -130,6 +132,10 @@ def code_snippets_sharing():
         st.session_state.file_current_session_id = str(uuid.uuid4())
         st.session_state.file_chat_sessions[st.session_state.file_current_session_id] = []
 
+    # State to keep track of selected file for chatting
+    if 'selected_file_for_chat' not in st.session_state:
+        st.session_state.selected_file_for_chat = None
+
     # Function to switch chat session
     def switch_chat_session(session_id):
         st.session_state.file_current_session_id = session_id
@@ -213,25 +219,29 @@ def code_snippets_sharing():
                 disabled=True  # Disabling input for text area
             )
 
+    st.session_state.selected_file_for_chat = selected_file
+
     st.subheader("Conversation History")
 
-    for idx, message in enumerate(current_chat_history):
+    for message in current_chat_history:
         with st.chat_message("user"):
             st.write(message['human'])
         with st.chat_message("assistant"):
             st.write(message["AI"])
 
-    # Chat with AI about the uploaded files
+    # Chat with AI about the selected file
     user_question = st.text_area("Ask a question:", key="file_user_question")
-    if st.button("Chat about Uploaded Files"):
+    if st.button("Chat about Selected File"):
         user_question = st.session_state.file_user_question
-        if user_question:
+        selected_file_content = st.session_state.uploaded_files_dict.get(st.session_state.selected_file_for_chat, "")
+
+        if user_question and selected_file_content:
             try:
                 # Measure the start time
                 start_time = time.time()
 
                 # Use AI to generate response
-                response = file_response(user_question, list(st.session_state.uploaded_files_dict.values()))
+                response = file_response(user_question, selected_file_content)
 
                 # Measure the end time
                 end_time = time.time()
@@ -251,7 +261,7 @@ def code_snippets_sharing():
                 st.experimental_rerun()
             except Exception as e:
                 st.error(f"An error occurred: {e}")
-                logger.error(f"Error during conversation: {e}")
+                st.error(f"Error during conversation: {e}")
 
 
 def view_code_snippets():
