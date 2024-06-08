@@ -268,8 +268,6 @@ def main():
     if 'user_key' not in st.session_state:
         login_interface()
     else:
-        
-        st.sidebar.image("C:/Users/ashup/OneDrive/Desktop/GROQ/icon1.png")
         st.sidebar.title(f"Welcome {st.session_state['username']}")
 
 
