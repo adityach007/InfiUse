@@ -11,3 +11,4 @@ pandas
 PyPDF2==3.0.1
 docx
 exceptiongroup==1.2.1
+expections
