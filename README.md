@@ -101,6 +101,10 @@ GROQ_API_KEY= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 codestral_api = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
+```
+FIREWORKS_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
 ```bash
 # Finally run the following command
 streamlit run app.py
