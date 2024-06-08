@@ -10,4 +10,4 @@ bcrypt
 pandas
 PyPDF2==3.0.1
 docx
-exceptions
+exceptiongroup==1.2.1
