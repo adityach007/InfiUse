@@ -101,7 +101,7 @@ GROQ_API_KEY= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 codestral_api = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-```
+```ini
 FIREWORKS_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
