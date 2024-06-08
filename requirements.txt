@@ -8,3 +8,4 @@ streamlit-ace==0.1.1
 python-dotenv
 bcrypt
 pandas
+PyPDF2==3.0.1
