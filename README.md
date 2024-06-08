@@ -15,7 +15,7 @@ Before accessing the main features, users must authenticate themselves. The appl
 
 The user data is stored in a JSON file **(users_db.json)**, and various helper functions are provided to load, save, and authenticate users.
 
-## Deployment Link: [!InfiUse](https://infiuse-cuwktwcwjroextiqfttnp9.streamlit.app/)
+## Deployment Link: [InfiUse](https://infiuse-cuwktwcwjroextiqfttnp9.streamlit.app/)
 
 ## WorkFlow
 
