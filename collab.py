@@ -112,7 +112,8 @@ def format_code(code_snippets, index, generated_titles):
 
 
 def code_snippets_sharing():
-    from app import file_response, inspect_and_run_code
+    from app import file_response, inspect_and_run_code  # Local import to avoid circular dependency
+
     st.title("Upload Code, PDF, or DOCX File")
 
     conversational_memory_length = 5
@@ -225,28 +226,32 @@ def code_snippets_sharing():
     if st.button("Chat about Uploaded Files"):
         user_question = st.session_state.file_user_question
         if user_question:
-            # Measure the start time
-            start_time = time.time()
+            try:
+                # Measure the start time
+                start_time = time.time()
 
-            # Use AI to generate response
-            response = file_response(user_question, list(st.session_state.uploaded_files_dict.values()))
+                # Use AI to generate response
+                response = file_response(user_question, list(st.session_state.uploaded_files_dict.values()))
 
-            # Measure the end time
-            end_time = time.time()
+                # Measure the end time
+                end_time = time.time()
 
-            # Calculate the elapsed time
-            elapsed_time = end_time - start_time
+                # Calculate the elapsed time
+                elapsed_time = end_time - start_time
 
-            # Ensure response is a string
-            response_text = response if isinstance(response, str) else str(response)
+                # Ensure response is a string
+                response_text = response if isinstance(response, str) else str(response)
 
-            message = {'human': user_question, 'AI': response_text, 'feedback': None, 'response_time': elapsed_time}
-            current_chat_history.append(message)
+                message = {'human': user_question, 'AI': response_text, 'feedback': None, 'response_time': elapsed_time}
+                current_chat_history.append(message)
 
-            # Save current chat history back to session state
-            st.session_state.file_chat_sessions[st.session_state.file_current_session_id] = current_chat_history
-            
-            st.experimental_rerun()
+                # Save current chat history back to session state
+                st.session_state.file_chat_sessions[st.session_state.file_current_session_id] = current_chat_history
+
+                st.experimental_rerun()
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
+                logger.error(f"Error during conversation: {e}")
 
 
 def view_code_snippets():
