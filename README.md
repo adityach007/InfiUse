@@ -1,6 +1,6 @@
 # Introduction
 
-The InfiUse Blog App is a comprehensive application that combines various functionalities, including blog creation, code sharing and collaboration, and an AI-powered chat assistant. The app leverages advanced technologies like large language models (LLMs) and APIs to provide an enhanced user experience.
+The InfiUse App is a comprehensive application that combines various functionalities, including blog creation, code sharing and collaboration, and an AI-powered chat assistant. The app leverages advanced technologies like large language models (LLMs) and APIs to provide an enhanced user experience.
 Environment Setup
 
 The project starts by loading environment variables, including the Groq API key and the Codestral API key. These keys are required for interacting with the respective AI services used throughout the application.
